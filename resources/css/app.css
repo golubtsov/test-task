@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar-item-active {
+    @apply block text-red-600 border-b-4 border-red-600 py-4;
+}
+
+.navbar-item {
+    @apply block text-gray-800 py-4;
+}
