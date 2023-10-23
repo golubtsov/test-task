@@ -12,7 +12,7 @@
                     link-close="{{route('products.list')}}"
                 />
                 <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500">
+                    <table class="w-full text-left text-gray-400">
                         <tbody>
                         <x-table.info-td
                             name="{{__('products.table.article')}}"
@@ -26,9 +26,9 @@
                             name="{{__('products.table.status.text')}}"
                             value="{{\App\Enum\ProductStatuses::getStatusLang($product->status)}}"
                         />
-                        <tr class="flex flex-1">
-                            <td class="flex-1">{{__('products.table.attributes')}}</td>
-                            <td class="text-white">
+                        <tr>
+                            <td class="py-4">{{__('products.table.attributes')}}</td>
+                            <td class="text-white py-4">
                                 @foreach($product->data as $el)
                                     <p>{{$el['name']}}: {{$el['value']}}</p>
                                 @endforeach

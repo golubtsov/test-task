@@ -1,4 +1,4 @@
 <tr class="text-base">
-    <td class="">{{$name}}</td>
-    <td class="text-white">{{$value}}</td>
+    <td class="py-4">{{$name}}</td>
+    <td class="text-white py-4">{{$value}}</td>
 </tr>

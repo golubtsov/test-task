@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         return ProductService::create($request->all())
             ? redirect()->route('products.list')
-            : dd(111);
+            : redirect()->route('something-went-wrong');
     }
 
     public function edit(int $id)
@@ -50,13 +50,13 @@ class ProductController extends Controller
     {
         return ProductService::update($request->all(), $id)
             ? redirect()->route('products.list')
-            : dd(111);
+            : redirect()->route('something-went-wrong');
     }
 
     public function delete(int $id)
     {
         return ProductService::delete($id)
             ? redirect()->route('products.list')
-            : dd(500);
+            : redirect()->route('something-went-wrong');
     }
 }

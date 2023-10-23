@@ -1,7 +1,7 @@
 @extends('layouts.products-app')
 
 @section('content')
-    <div class="flex w-full bg-gray-700 h-screen fixed top-0 left-0">
+    <div class="flex w-full bg-gray-700 h-screen overflow-y-auto fixed top-0 left-0">
         <div class="w-full max-w-xl mx-auto">
             <form action="{{route('product.store')}}" method="post"
                   class="block w-full p-6">

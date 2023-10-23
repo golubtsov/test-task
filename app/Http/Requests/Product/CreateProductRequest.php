@@ -27,8 +27,8 @@ class CreateProductRequest extends FormRequest
             ],
             'name' => ['required', 'string', 'min:10'],
             'status' => ['required', 'int'],
-            'namesAttributes' => ['array'],
-            'valuesAttributes' => ['array'],
+            'namesAttributes' => ['array', 'required'],
+            'valuesAttributes' => ['array', 'required'],
         ];
     }
 
@@ -51,7 +51,9 @@ class CreateProductRequest extends FormRequest
             ]),
             'status.required' => __('products.errors.required', ['field' => __('products.table.status.text')]),
             'namesAttributes.array' => __('products.errors.required'),
-            'valuesAttributes.array' => __('products.errors.required'),
+            'namesAttributes.required' => __('products.errors.required'),
+            'valuesAttributes.array' => __('products.errors.attributes'),
+            'valuesAttributes.required' => __('products.errors.attributes'),
         ];
     }
 }

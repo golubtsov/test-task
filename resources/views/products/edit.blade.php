@@ -32,7 +32,7 @@
                 />
                 <div class="my-4">
                     <x-blue-button
-                            text="{{__('products.btns.add')}}"
+                            text="{{__('products.btns.save')}}"
                     />
                 </div>
             </form>
