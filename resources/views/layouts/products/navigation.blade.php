@@ -10,7 +10,7 @@
     <nav class="h-screen flex text-white">
         <ul class="px-12">
             <li class="my-4">
-                <a href="" class="text-sm p-4">Продукты</a>
+                <a href="{{route('products.list')}}" class="text-sm p-4">{{__('products.titles.main')}}</a>
             </li>
         </ul>
     </nav>

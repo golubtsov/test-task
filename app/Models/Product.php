@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enum\ProductsStatus;
+use App\Enum\ProductStatuses;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,15 +36,10 @@ class Product extends Model
         'data' => 'json',
     ];
 
-    public function user(): HasOne
-    {
-        return $this->hasOne(User::class);
-    }
-
     public static function getAvailableProducts(): Collection
     {
         $product = new static();
 
-        return $product->where('status', '=', ProductsStatus::AVAILABLE)->get();
+        return $product->where('status', '=', ProductStatuses::AVAILABLE)->get();
     }
 }

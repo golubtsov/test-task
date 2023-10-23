@@ -3,29 +3,31 @@
 namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateProductRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'article' => strip_tags($this->get('article')),
-            'name' => strip_tags($this->get('name')),
-            'status' => strip_tags($this->get('status')),
+            'article' =>  strip_tags($this->get('article')),
+            'name' =>  strip_tags($this->get('name')),
+            'status' =>  strip_tags($this->get('status')),
         ]);
     }
 
     public function rules(): array
     {
+        $productId = (int)array_reverse(explode('/', $this->getRequestUri()))[1];
+
         return [
             'article' => [
                 'required',
                 'string',
-                'unique:products,article',
                 'regex:/^[a-z,1-9]+$/i',
-                'min:5',
+                Rule::unique('products', 'article')->ignore($productId)
             ],
-            'name' => ['required', 'string', 'min:10'],
+            'name' => ['required', 'string'],
             'status' => ['required', 'int'],
             'namesAttributes' => ['array'],
             'valuesAttributes' => ['array'],
@@ -39,16 +41,8 @@ class CreateProductRequest extends FormRequest
             'article.unique' => __('products.errors.unique', ['field' => __('products.table.article')]),
             'article.regex' => __('products.errors.regex.lat', ['field' => __('products.table.article')]),
             'article.string' => __('products.errors.string', ['field' => __('products.table.article')]),
-            'article.min' => __('products.errors.min', [
-                'field' => __('products.table.article'),
-                'number' => 5,
-            ]),
             'name.required' => __('products.errors.required', ['field' => __('products.table.name')]),
             'name.string' => __('products.errors.string', ['field' => __('products.table.name')]),
-            'name.min' => __('products.errors.min', [
-                'field' => __('products.table.name'),
-                'number' => 10,
-            ]),
             'status.required' => __('products.errors.required', ['field' => __('products.table.status.text')]),
             'namesAttributes.array' => __('products.errors.required'),
             'valuesAttributes.array' => __('products.errors.required'),

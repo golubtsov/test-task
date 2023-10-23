@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CreateProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
 use App\Services\ProductService;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -36,23 +38,25 @@ class ProductController extends Controller
             : dd(111);
     }
 
-    public function edit()
+    public function edit(int $id)
     {
-
+        return view('products.edit')
+            ->with([
+                'product' => Product::query()->find($id)
+            ]);
     }
 
-    public function update()
+    public function update(UpdateProductRequest $request, int $id)
     {
-
+        return ProductService::update($request->all(), $id)
+            ? redirect()->route('products.list')
+            : dd(111);
     }
 
-    public function delete()
+    public function delete(int $id)
     {
-
-    }
-
-    public function destroy()
-    {
-
+        return ProductService::delete($id)
+            ? redirect()->route('products.list')
+            : dd(500);
     }
 }

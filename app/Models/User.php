@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
+ * @property int $role_id
  * @property string $name
  * @property string $email
  * @property string $remember_token
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     protected $hidden = [
@@ -40,9 +42,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
-    }
 }

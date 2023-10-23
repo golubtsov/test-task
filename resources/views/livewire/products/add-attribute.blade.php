@@ -3,24 +3,86 @@
         <h1 class="text-xl text-white font-bold">{{__('products.table.attributes')}}</h1>
     </div>
 
-    @if($countAttributes != 0)
-        @for($i = 0; $i < $countAttributes; $i++)
+    @if(is_null($elemAttributes))
+
+        @if($countAttributes != 0)
+            @for($i = 0; $i < $countAttributes; $i++)
+                <div class="flex w-full gap-4 items-center">
+                    <div class="flex flex-col mt-4">
+                        <label for="nameAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                        <input type="text" name="namesAttributes[]" id="nameAttribute" required class="block mt-1 rounded-md">
+                        @error('nameAttribute')
+                        <span class="mt-1 text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="flex flex-col mt-4">
+                        <label for="valueAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                        <input type="text" name="valuesAttributes[]" id="valueAttribute" required class="block mt-1 rounded-md">
+                        @error('valueAttribute')
+                        <span class="mt-1 text-red-600">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="flex items-center mt-10">
+                        <button wire:click.prevent="removeAttribute" class="block text-gray-400">
+                            @include('svg.trash')
+                        </button>
+                    </div>
+                </div>
+            @endfor
+        @endif
+
+    @else
+
+        @foreach($elemAttributes as $index => $elem)
             <div class="flex w-full gap-4 items-center">
                 <div class="flex flex-col mt-4">
                     <label for="nameAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
-                    <input type="text" name="namesAttributes[]" id="nameAttribute" class="block mt-1 rounded-md">
+                    <input value="{{$elem['name']}}" type="text" name="namesAttributes[]" id="nameAttribute" required class="block mt-1 rounded-md">
+                    @error('nameAttribute')
+                    <span class="mt-1 text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="flex flex-col mt-4">
                     <label for="valueAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
-                    <input type="text" name="valuesAttributes[]" id="valueAttribute" class="block mt-1 rounded-md">
+                    <input value="{{$elem['value']}}" type="text" name="valuesAttributes[]" id="valueAttribute" required class="block mt-1 rounded-md">
+                    @error('valueAttribute')
+                    <span class="mt-1 text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="flex items-center mt-10">
-                    <button wire:click.prevent="removeAttribute" class="block text-gray-400">
+                    <button wire:click.prevent="removeAttribute({{$index}})" class="block text-gray-400">
                         @include('svg.trash')
                     </button>
                 </div>
             </div>
-        @endfor
+        @endforeach
+
+            @if($countAttributes != 0)
+                @for($i = 0; $i < $countAttributes; $i++)
+                    <div class="flex w-full gap-4 items-center">
+                        <div class="flex flex-col mt-4">
+                            <label for="nameAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                            <input type="text" name="namesAttributes[]" id="nameAttribute" required class="block mt-1 rounded-md">
+                            @error('nameAttribute')
+                            <span class="mt-1 text-red-600">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="flex flex-col mt-4">
+                            <label for="valueAttribute" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                            <input type="text" name="valuesAttributes[]" id="valueAttribute" required class="block mt-1 rounded-md">
+                            @error('valueAttribute')
+                            <span class="mt-1 text-red-600">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="flex items-center mt-10">
+                            <button wire:click.prevent="removeAttribute" class="block text-gray-400">
+                                @include('svg.trash')
+                            </button>
+                        </div>
+                    </div>
+                @endfor
+            @endif
+
     @endif
 
     <div class="my-3">

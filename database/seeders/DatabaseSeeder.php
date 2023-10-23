@@ -7,9 +7,6 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
@@ -17,6 +14,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
+             'role_id' => config('products.role.admin'),
          ]);
     }
 }

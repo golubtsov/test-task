@@ -14,11 +14,19 @@ class InputLabelElement extends Component
 
     public string $value;
 
-    public function __construct(string $name, string $text, string $value = '')
+    public bool $disabled;
+
+    public function __construct(
+        string $name,
+        string $text,
+        string $value = '',
+        bool $disabled = false,
+    )
     {
         $this->name = $name;
         $this->text = $text;
         $this->value = $value;
+        $this->disabled = $disabled;
     }
 
     public function render(): View|Closure|string
