@@ -10,6 +10,7 @@ return [
     'table' => [
         'article' => 'Артикул',
         'name' => 'Название',
+        'value' => 'Значение',
         'status' => [
             'text' => 'Статус',
             'available' => 'Доступен',

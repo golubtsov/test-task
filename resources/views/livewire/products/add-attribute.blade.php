@@ -16,7 +16,7 @@
                         @enderror
                     </div>
                     <div class="flex flex-col mt-4">
-                        <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                        <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.value')}}</label>
                         <input type="text" name="valuesAttributes[]" id="valuesAttributes" required class="block mt-1 rounded-md">
                         @error('valuesAttributes')
                         <span class="mt-1 text-red-600">{{ $message }}</span>
@@ -43,7 +43,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col mt-4">
-                    <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                    <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.value')}}</label>
                     <input value="{{$elem['value']}}" type="text" name="valuesAttributes[]" id="valuesAttributes" required class="block mt-1 rounded-md">
                     @error('valuesAttributes')
                     <span class="mt-1 text-red-600">{{ $message }}</span>
@@ -68,7 +68,7 @@
                             @enderror
                         </div>
                         <div class="flex flex-col mt-4">
-                            <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.name')}}</label>
+                            <label for="valuesAttributes" class="block text-white text-sm">{{__('products.table.value')}}</label>
                             <input type="text" name="valuesAttributes[]" id="valuesAttributes" required class="block mt-1 rounded-md">
                             @error('valuesAttributes')
                             <span class="mt-1 text-red-600">{{ $message }}</span>

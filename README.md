@@ -1,11 +1,14 @@
 # Настройка проекта
 
-1.  ``git clone https://github.com/golubtsov/test-task.git``
+1.  
+```
+git clone https://github.com/golubtsov/test-task.git
+```
 
 2. на основе ``.env.example`` создать ``.env``, заполнить в ``.env``
 
 ```
-MAIL_NEW_PRODUCT_TO=
+MAIL_NEW_PRODUCT_TO="кому отправоять уведомления о новом продукте"
 MAIL_USERNAME=
 MAIL_PASSWORD=
 ```
@@ -17,7 +20,6 @@ npm i
 ./vendor/bin/sail up
 
 // из контейнера
-php artisan queue:table
 php artisan migrate:fresh --seed
 php artisan queue:work
 ```
