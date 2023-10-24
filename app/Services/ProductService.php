@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Jobs\Prosuct\MailAboutNewProductJob;
+use App\Jobs\Product\MailAboutNewProductJob;
 use App\Models\Product;
 
 class ProductService

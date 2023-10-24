@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function informUserAboutNewProduct(): User
+    {
+        $user = new User();
+        $user->email = config('products.email');
+
+        return $user;
+    }
 }

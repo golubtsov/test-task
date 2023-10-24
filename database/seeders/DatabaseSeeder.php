@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Test User Simple',
             'email' => 'simple@example.com',
-            'role_id' => config('products.role.admin'),
         ]);
     }
 }
